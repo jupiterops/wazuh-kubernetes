@@ -15,7 +15,7 @@ metadata:
   labels:
     app: wazuh-elasticsearch
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: wazuh-elasticsearch
   ports:

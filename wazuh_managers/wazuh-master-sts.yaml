@@ -34,6 +34,9 @@ spec:
       containers:
         - name: wazuh-manager
           image: 'wazuh/wazuh:3.13.0_7.7.1'
+          env:
+            - name: ELASTICSEARCH_URL
+              value: https://vpc-jm-audit-siem-fz3mqqxvgsrzhvrez4u5e7pdha.ap-south-1.es.amazonaws.com:443
           resources:
             requests:
               cpu: 2
@@ -55,6 +58,14 @@ spec:
               name: cluster
             - containerPort: 55000
               name: api
+      serviceAccountName: fluentd
+      nodeSelector:
+        application: siem
+      tolerations:
+        - effect: NoSchedule
+          key: application
+          operator: Equal
+          value: siem
   volumeClaimTemplates:
     - metadata:
         name: wazuh-manager-master
@@ -62,7 +73,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: gp2-encrypted-retained
+        storageClassName: encrypted-gp2
         resources:
           requests:
             storage: 50Gi

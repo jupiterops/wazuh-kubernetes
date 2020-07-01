@@ -1,0 +1,12 @@
+apiVersion:  kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - wazuh_managers/wazuh-cluster-svc.yaml
+  - wazuh_managers/wazuh-master-conf.yaml
+  - wazuh_managers/wazuh-master-sts.yaml
+  - wazuh_managers/wazuh-master-svc.yaml
+  - wazuh_managers/wazuh-worker-0-conf.yaml
+  - wazuh_managers/wazuh-worker-0-sts.yaml
+  - wazuh_managers/wazuh-worker-1-conf.yaml
+  - wazuh_managers/wazuh-worker-1-sts.yaml
+  - wazuh_managers/wazuh-workers-svc.yaml

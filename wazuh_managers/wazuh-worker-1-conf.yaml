@@ -186,7 +186,6 @@ data:
       <global>
         <white_list>127.0.0.1</white_list>
         <white_list>^localhost.localdomain$</white_list>
-        <white_list>10.66.0.2</white_list>
       </global>
 
       <command>
